@@ -74,7 +74,7 @@ namespace UsingEntityFramework
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Are you really want to delete item?","Warning!", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if(MessageBox.Show("Do you really want to delete item?","Warning!", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 db.PersonalInfoes.Remove((PersonalInfo) dataGrid.SelectedItem);
                 db.SaveChanges();
