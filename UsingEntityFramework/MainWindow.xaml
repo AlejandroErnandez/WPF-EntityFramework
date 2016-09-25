@@ -1,0 +1,75 @@
+﻿<Window x:Class="UsingEntityFramework.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UsingEntityFramework"
+        mc:Ignorable="d"
+        Title="Application" Height="350" Width="525" MinHeight="350" MinWidth="525" Loaded="onload">
+    <Grid>
+        <Button x:Name="buttonAdd"  Click="buttonAdd_Click"  HorizontalAlignment="Left" Margin="236,10,0,0" VerticalAlignment="Top" Width="80" Height="45">
+            <Button.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="Green" Offset="0"/>
+                    <GradientStop Color="Yellow" Offset="0.8"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <StackPanel>
+                <Image Source="icon3.png" Width="25" ></Image>
+                <Label Content="Add" FontSize="11" Padding="0"></Label>
+            </StackPanel>
+        </Button>
+           
+        <Button x:Name="buttonEdit"  Click="buttonEdit_Click" HorizontalAlignment="Left" Margin="330,10,0,0" VerticalAlignment="Top" Width="80" Height="45">
+            <Button.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="Yellow" Offset="0"/>
+                    <GradientStop Color="Orange" Offset="1.1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <StackPanel>
+                <Image Source="icon4.png" Width="25" ></Image>
+                <Label Content="Edit" FontSize="11" Padding="0"></Label>
+            </StackPanel>
+        </Button>
+        
+
+        <Button x:Name="buttonDelete"  Click="buttonDelete_Click" HorizontalAlignment="Left" Margin="425,10,0,0" VerticalAlignment="Top" Width="80" Height="45">
+            <Button.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="Red" Offset="0"/>
+                    <GradientStop Color="Yellow" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <StackPanel>
+                <Image Source="icon2.png" Width="25" ></Image>
+                <Label Content="Delete" FontSize="11" Padding="0"></Label>
+            </StackPanel>
+        </Button>
+
+        <Label x:Name="label4" Content="Search" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="38,56,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Name" HorizontalAlignment="Left" Margin="87,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.489,0.474"/>
+        <Label x:Name="label2" Content="Position" HorizontalAlignment="Left" Margin="236,56,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="Salary" HorizontalAlignment="Left" Margin="380,56,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelId" Content=""  HorizontalAlignment="Left" Margin="38,87,0,0" VerticalAlignment="Top" Width="32"/>
+
+        <TextBox x:Name="textBoxSearch" TextChanged="textBoxSearch_TextChanged" HorizontalAlignment="Left" Height="23" Margin="60,9,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="161"/>
+        <TextBox x:Name="textBoxSalary" Text="{Binding Salary, UpdateSourceTrigger=PropertyChanged}" DataContext="{Binding ElementName=dataGrid, Path=SelectedItem}" HorizontalAlignment="Left" Height="23" Margin="380,87,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxPosition" Text="{Binding Position, UpdateSourceTrigger=PropertyChanged}" DataContext="{Binding ElementName=dataGrid, Path=SelectedItem}" HorizontalAlignment="Left" Height="23" Margin="236,87,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" DataContext="{Binding ElementName=dataGrid, Path=SelectedItem}" HorizontalAlignment="Left" Height="23" Margin="87,87,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+
+        <DataGrid x:Name="dataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" EnableRowVirtualization="True" AutoGenerateColumns="False" SelectionMode="Single" IsTextSearchEnabled="True" IsReadOnly="True" HorizontalAlignment="Left" Margin="38,128,0,0" VerticalAlignment="Top" Height="171" Width="442">
+            <DataGrid.Effect>
+                <DropShadowEffect></DropShadowEffect>
+            </DataGrid.Effect>
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="idCol" Header="Id" Binding="{Binding Id}" Width="30"/>
+                <DataGridTextColumn x:Name="nameCol" Header="Name" Binding="{Binding Name}" Width="170"/>
+                <DataGridTextColumn x:Name="positionCol" Header="Position" Binding="{Binding Position}" Width="130"/>
+                <DataGridTextColumn x:Name="salaryCol" Header="Salary" Binding="{Binding Salary}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
